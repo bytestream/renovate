@@ -224,6 +224,8 @@ This is used to manually restrict which versions are possible to upgrade to base
 
 Renovate's default behaviour is to reuse/reopen a single Config Warning issue in each repository so as to keep the "noise" down. However for some people this has the downside that the config warning won't be sorted near the top if you view issues by creation date. Configure this option to `false` if you prefer Renovate to open a new issue whenever there is a config warning.
 
+## deprecationReplacement
+
 ## description
 
 The description field is used by config presets to describe what they do. They are then collated as part of the onboarding description.

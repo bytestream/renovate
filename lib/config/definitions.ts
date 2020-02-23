@@ -1279,6 +1279,23 @@ const options: RenovateOptions[] = [
     cli: false,
     mergeable: true,
   },
+  {
+    name: 'deprecationReplacement',
+    description: 'Configuration for deprecation replacement',
+    stage: 'branch',
+    type: 'object',
+    default: {
+      branchTopic: 'deprecation-{{{depNameSanitized}}}-{{{newNameSanitized}}}',
+      commitMessageAction: 'Replace deprecated dependency',
+      commitMessageTopic: '{{{depName}}} with {{{newName}}}',
+      commitMessageExtra: null,
+      prBodyDefinitions: {
+        Change: 'Replaced with {{{newName}}}',
+      },
+    },
+    cli: false,
+    mergeable: true,
+  },
   // Dependency Groups
   {
     name: 'lazyGrouping',
