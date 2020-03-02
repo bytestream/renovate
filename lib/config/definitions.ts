@@ -815,6 +815,26 @@ const options: RenovateOptions[] = [
     env: false,
   },
   {
+    name: 'replacementName',
+    description: '',
+    type: 'string',
+    stage: 'package',
+    parent: 'packageRules',
+    mergeable: true,
+    cli: false,
+    env: false,
+  },
+  {
+    name: 'replacementVersion',
+    description: '',
+    type: 'string',
+    stage: 'package',
+    parent: 'packageRules',
+    mergeable: true,
+    cli: false,
+    env: false,
+  },
+  {
     name: 'updateTypes',
     description:
       'Update types to match against (major, minor, pin, etc). Valid only within `packageRules` object.',
@@ -1274,23 +1294,6 @@ const options: RenovateOptions[] = [
       groupName: null,
       prBodyDefinitions: {
         Change: 'All locks refreshed',
-      },
-    },
-    cli: false,
-    mergeable: true,
-  },
-  {
-    name: 'deprecationReplacement',
-    description: 'Configuration for deprecation replacement',
-    stage: 'branch',
-    type: 'object',
-    default: {
-      branchTopic: 'deprecation-{{{depNameSanitized}}}-{{{newNameSanitized}}}',
-      commitMessageAction: 'Replace deprecated dependency',
-      commitMessageTopic: '{{{depName}}} with {{{newName}}}',
-      commitMessageExtra: null,
-      prBodyDefinitions: {
-        Change: 'Replaced with {{{newName}}}',
       },
     },
     cli: false,
