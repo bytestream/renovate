@@ -198,6 +198,20 @@ describe('workers/branch/package-json', () => {
       });
       expect(testContent).toBeNull();
     });
+    it('replaces package', () => {
+      const upgrade = {
+        depType: 'dependencies',
+        depName: 'config',
+        newName: 'abc',
+        newValue: '2.0.0',
+      };
+      const testContent = npmUpdater.updateDependency({
+        fileContent: input01Content,
+        upgrade,
+      });
+      expect(JSON.parse(testContent).dependencies.config).toBeUndefined();
+      expect(JSON.parse(testContent).dependencies.abc).toEqual('2.0.0');
+    });
   });
   describe('.bumpPackageVersion()', () => {
     const content = JSON.stringify({

@@ -117,4 +117,22 @@ describe('datasource/index', () => {
     });
     expect(res.sourceUrl).toEqual('https://github.com/Jasig/cas');
   });
+  it('applies replacements', async () => {
+    npmDatasource.getPkgReleases.mockResolvedValue({
+      releases: [{ version: '1.0.0' }],
+    });
+    const res = await datasource.getPkgReleases({
+      datasource: datasourceNpm.id,
+      depName: 'abc',
+      packageRules: [
+        {
+          packageNames: ['abc'],
+          replacementName: 'def',
+          replacementVersion: '2.0.0',
+        },
+      ],
+    });
+    expect(res.replacementName).toEqual('def');
+    expect(res.replacementVersion).toEqual('2.0.0');
+  });
 });
