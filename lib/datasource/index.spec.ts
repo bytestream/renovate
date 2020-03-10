@@ -124,13 +124,8 @@ describe('datasource/index', () => {
     const res = await datasource.getPkgReleases({
       datasource: datasourceNpm.id,
       depName: 'abc',
-      packageRules: [
-        {
-          packageNames: ['abc'],
-          replacementName: 'def',
-          replacementVersion: '2.0.0',
-        },
-      ],
+      replacementName: 'def',
+      replacementVersion: '2.0.0',
     });
     expect(res.replacementName).toEqual('def');
     expect(res.replacementVersion).toEqual('2.0.0');

@@ -939,6 +939,14 @@ Use this field to match rules against types of updates. For example to apply a s
 }
 ```
 
+### replacementName
+
+Valid in `packageRules`
+
+### replacementVersion
+
+Valid in `packageRules`
+
 ## patch
 
 Add to this object if you wish to define rules that apply only to patch updates. See also `major` and `minor` configuration options.
@@ -1220,14 +1228,6 @@ If the `versioning` for a dependency is not captured with a named group then it 
 ## registryUrls
 
 This is only necessary in case you need to manually configure a registry URL to use for datasource lookups. Applies to PyPI (pip) only for now. Supports only one URL for now but is defined as a list for forward compatibility.
-
-## replacementName
-
-Valid in `packageRules`
-
-## replacementVersion
-
-Valid in `packageRules`
 
 ## requiredStatusChecks
 

@@ -1,5 +1,4 @@
 import { DATASOURCE_FAILURE } from '../constants/error-messages';
-import { PackageRule } from '../config/common';
 
 export interface Config {
   datasource?: string;
@@ -25,7 +24,8 @@ export interface GetPkgReleasesConfig extends ReleasesConfigBase {
   depName: string;
   lookupName?: string;
   versioning?: string;
-  packageRules?: PackageRule[];
+  replacementName?: string;
+  replacementVersion?: string;
 }
 
 export function isGetPkgReleasesConfig(

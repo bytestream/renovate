@@ -13,8 +13,6 @@ import {
   GetPkgReleasesConfig,
 } from './common';
 import datasources from './api.generated';
-import { applyPackageRules } from '../util/package-rules';
-import { mergeChildConfig } from '../config';
 import { clone } from '../util/clone';
 
 export * from './common';
@@ -34,12 +32,10 @@ function applyReplacements(
   dep: ReleaseResult,
   config: PkgReleaseConfig
 ): ReleaseResult {
-  let depConfig = mergeChildConfig(config, dep);
-  depConfig = applyPackageRules(depConfig);
-  if (depConfig.replacementName && depConfig.replacementVersion) {
+  if (config.replacementName && config.replacementVersion) {
     const ret = clone(dep);
-    ret.replacementName = depConfig.replacementName;
-    ret.replacementVersion = depConfig.replacementVersion;
+    ret.replacementName = config.replacementName;
+    ret.replacementVersion = config.replacementVersion;
     return ret;
   }
   return dep;
