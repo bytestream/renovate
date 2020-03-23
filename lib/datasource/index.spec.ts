@@ -3,15 +3,20 @@ import * as datasource from '.';
 import * as datasourceDocker from './docker';
 import * as datasourceGithubTags from './github-tags';
 import * as datasourceNpm from './npm';
-import { mocked } from '../../test/util';
 import { loadModules } from '../util/modules';
+import { mocked, getName } from '../../test/util';
 
 jest.mock('./docker');
 jest.mock('./npm');
 
 const npmDatasource = mocked(datasourceNpm);
 
-describe('datasource/index', () => {
+describe(getName(__filename), () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+    global.repoCache = {};
+  });
+
   it('returns datasources', () => {
     expect(datasource.getDatasources()).toBeDefined();
     expect(datasource.getDatasourceList()).toBeDefined();
