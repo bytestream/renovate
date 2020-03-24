@@ -198,6 +198,18 @@ describe('workers/branch/package-json', () => {
       });
       expect(testContent).toBeNull();
     });
+    it('returns null file empty', () => {
+      const upgrade = {
+        depType: 'blah',
+        depName: 'angular-touch-not',
+        newValue: '1.5.8',
+      };
+      const testContent = npmUpdater.updateDependency({
+        fileContent: input01Content,
+        upgrade,
+      });
+      expect(testContent).toBeNull();
+    });
     it('replaces package', () => {
       const upgrade = {
         depType: 'dependencies',

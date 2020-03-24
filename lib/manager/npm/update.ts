@@ -85,12 +85,13 @@ function replaceAsString(
   let searchIndex = fileContent.indexOf(`"${depType}"`) + depType.length;
   logger.trace(`Starting search at index ${searchIndex}`);
   // Iterate through the rest of the file
+  let testContent: string = null;
   for (; searchIndex < fileContent.length; searchIndex += 1) {
     // First check if we have a hit for the old version
     if (matchAt(fileContent, searchIndex, searchString)) {
       logger.trace(`Found match at index ${searchIndex}`);
       // Now test if the result matches
-      const testContent = replaceAt(
+      testContent = replaceAt(
         fileContent,
         searchIndex,
         searchString,
@@ -98,11 +99,11 @@ function replaceAsString(
       );
       // Compare the parsed JSON structure of old and new
       if (isEqual(parsedContents, JSON.parse(testContent))) {
-        return testContent;
+        break;
       }
     }
   }
-  return null;
+  return testContent;
 }
 
 export function updateDependency({
