@@ -28,9 +28,10 @@ function load(datasource: string): Promise<Datasource> {
 }
 
 type GetReleasesInternalConfig = GetReleasesConfig & GetPkgReleasesConfig;
+
 function applyReplacements(
   dep: ReleaseResult,
-  config: PkgReleaseConfig
+  config: GetReleasesInternalConfig
 ): ReleaseResult {
   if (config.replacementName && config.replacementVersion) {
     const ret = clone(dep);

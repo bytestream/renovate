@@ -1262,7 +1262,7 @@ describe('workers/repository/process/lookup', () => {
       config.depName = 'node';
       config.versioning = dockerVersioning.id;
       config.datasource = datasourceDocker.id;
-      docker.getPkgReleases.mockResolvedValueOnce({
+      docker.getReleases.mockResolvedValueOnce({
         replacementName: 'python',
         replacementVersion: '4.0.0',
         releases: [

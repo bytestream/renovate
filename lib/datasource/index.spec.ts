@@ -123,7 +123,7 @@ describe(getName(__filename), () => {
     expect(res.sourceUrl).toEqual('https://github.com/Jasig/cas');
   });
   it('applies replacements', async () => {
-    npmDatasource.getPkgReleases.mockResolvedValue({
+    npmDatasource.getReleases.mockResolvedValue({
       releases: [{ version: '1.0.0' }],
     });
     const res = await datasource.getPkgReleases({
