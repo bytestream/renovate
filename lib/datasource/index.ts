@@ -13,7 +13,6 @@ import {
   GetPkgReleasesConfig,
 } from './common';
 import datasources from './api.generated';
-import { clone } from '../util/clone';
 
 export * from './common';
 
@@ -34,10 +33,11 @@ function applyReplacements(
   config: GetReleasesInternalConfig
 ): ReleaseResult {
   if (config.replacementName && config.replacementVersion) {
-    const ret = clone(dep);
-    ret.replacementName = config.replacementName;
-    ret.replacementVersion = config.replacementVersion;
-    return ret;
+    return {
+      ...dep,
+      replacementName: config.replacementName,
+      replacementVersion: config.replacementVersion,
+    };
   }
   return dep;
 }
